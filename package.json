@@ -1,0 +1,39 @@
+{
+  "name": "refund_api",
+  "version": "1.0.0",
+  "description": "API de solicitação de reembolso",
+  "main": "src/server.ts",
+  "scripts": {
+    "dev": "node --import tsx --watch src/server.ts",
+    "dev:docker": "nodemon --legacy-watch",
+    "start": "node --import tsx src/server.ts",
+    "dkdev": "docker compose --profile dev up --build",
+    "dkprod": "docker compose --profile prod up --build -d"
+  },
+  "keywords": [],
+  "author": "Felipe Mendes",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0",
+    "zod": "^4.4.2"
+  },
+  "devDependencies": {
+    "@prisma/client": "^7.8.0",
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "nodemon": "^3.1.10",
+    "prisma": "^7.8.0",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.17",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.3"
+  }
+}

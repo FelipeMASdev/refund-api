@@ -1,0 +1,8 @@
+interface NewUser {
+  name: string;
+  email: string;
+  password: string;
+  role: UserRole;
+}
+
+export { NewUser };
