@@ -14,11 +14,9 @@ class SessionsController {
 
     const signInInfo: SignIn = bodySchema.parse(req.body);
 
-    const result = await signIn(signInInfo);
+    const { token, user } = await signIn(signInInfo);
 
-
-
-    return res.status(200).json({ message: "Sessão criada com sucesso!", result });
+    return res.status(200).json({ message: "Sessão criada com sucesso!", token, user });
   }
 }
 
