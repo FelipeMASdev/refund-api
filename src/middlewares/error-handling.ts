@@ -1,7 +1,7 @@
 import { AppError } from "@/utils/AppError";
 import { ErrorRequestHandler } from "express";
-import { success, ZodError } from "zod";
-import z from "zod";
+import { ZodError } from "zod";
+import { z } from "zod";
 
 export const errorHandling: ErrorRequestHandler = (error, _req, res, _next) => {
   if (error instanceof AppError) {

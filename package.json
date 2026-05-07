@@ -8,7 +8,8 @@
     "dev:docker": "nodemon --legacy-watch",
     "start": "node --import tsx src/server.ts",
     "dkdev": "docker compose --profile dev up --build",
-    "dkprod": "docker compose --profile prod up --build -d"
+    "dkprod": "docker compose --profile prod up --build -d",
+    "prisma:studio": "npx prisma studio"
   },
   "keywords": [],
   "author": "Felipe Mendes",
