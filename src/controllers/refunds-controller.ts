@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { Refund } from "@/types/refund";
 
-import { createRefund, listRefunds } from "@/services/refunds-services";
+import { createRefund, listRefunds, getRefundById } from "@/services/refunds-services";
 
 export const CategoriesEnum = z.enum([
   "food",
@@ -69,6 +69,18 @@ class RefundsController {
       refunds, 
       pagination 
     });
+  }
+
+  async show(req: Request, res: Response) {
+    const paramSchema = z.object({
+      id: z.uuid({ message: "ID de reembolso inválido." }),
+    });
+
+    const { id } = paramSchema.parse(req.params);
+
+    const refund = await getRefundById(id);
+
+    return res.status(200).json({ message: "Detalhes do reembolso obtidos com sucesso.", refund });
   }
 }
 

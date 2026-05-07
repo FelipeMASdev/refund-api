@@ -85,4 +85,22 @@ async function listRefunds( query: {
   };
 }
 
-export { createRefund, listRefunds };
+async function getRefundById(id: string) {
+  const refund = await prisma.refunds.findFirst({
+    where: { id },
+    include: { 
+      user: {
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          role: true,
+        }
+      }
+    }
+  });
+
+  return refund;
+}
+
+export { createRefund, listRefunds, getRefundById };
