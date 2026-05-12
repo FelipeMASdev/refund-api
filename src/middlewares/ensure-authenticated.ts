@@ -31,7 +31,7 @@ function ensureAuthenticated(request: Request, response: Response, next: NextFun
 
     const decodedToken = verify(token, secret);
     const { role, sub: user_id } = decodedToken as TokenPayload;
-    console.log("Decoded Token:", decodedToken);
+
     request.user = {
       id: user_id,
       role,
