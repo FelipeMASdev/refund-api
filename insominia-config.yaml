@@ -1,0 +1,362 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Refund
+meta:
+  id: wrk_ff6b1880461e4b819a73fdb6c050fa8b
+  created: 1777845049289
+  modified: 1777845049289
+  description: ""
+collection:
+  - name: Health
+    meta:
+      id: fld_089f6b8e8979489abfb7add1afc6437c
+      created: 1777845140842
+      modified: 1777845283649
+      sortKey: -1777845140842
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES_ }}"
+        name: Health Check
+        meta:
+          id: req_9a9614ea5d154d3097d1afd50a259aed
+          created: 1777845145777
+          modified: 1777845263724
+          isPrivate: false
+          description: ""
+          sortKey: -1777845145777
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RES_: health
+  - name: Users
+    meta:
+      id: fld_ca2a4af0af7e4fb09aafef7f924cbe39
+      created: 1777877418325
+      modified: 1777878718972
+      sortKey: -1777877418325
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES }}"
+        name: Create
+        meta:
+          id: req_1cd946b0283b486bb1d48939b132052e
+          created: 1777878721409
+          modified: 1780683194579
+          isPrivate: false
+          description: ""
+          sortKey: -1777878721409
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name":"User",
+            	"email": "user@refund.com",
+            	"password": "123456",
+            	"role": "employee"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RES: users
+    environmentPropertyOrder:
+      "&":
+        - RES
+  - name: Sessions
+    meta:
+      id: fld_fd779bc042b54063afc0eb18ff10e263
+      created: 1777951031747
+      modified: 1777951057695
+      sortKey: -1777951031747
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES }}"
+        name: Create
+        meta:
+          id: req_012e036340c04176881f0276e904ec4a
+          created: 1777951058577
+          modified: 1780683186484
+          isPrivate: false
+          description: ""
+          sortKey: -1777951058577
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email":"user@refund.com",
+            	"password":"123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RES: sessions
+  - name: Refunds
+    meta:
+      id: fld_e4e960df2ebb44c2b1b840e87e48a921
+      created: 1777966569234
+      modified: 1777966577278
+      sortKey: -1777966569234
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES }}"
+        name: Create
+        meta:
+          id: req_210594e8aa1a4bc0909ded5cb61e616b
+          created: 1777966585509
+          modified: 1778108182482
+          isPrivate: false
+          description: ""
+          sortKey: -1777966585509
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Almoço",
+            	"category": "food",
+            	"amount": 45.75,
+            	"filename": "gdgfagddgdgdaadsssafafs.png"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_012e036340c04176881f0276e904ec4a',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 86400 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES }}"
+        name: Index
+        meta:
+          id: req_a37a353b1a024b0a99331f6068279c2a
+          created: 1778106965165
+          modified: 1778117934673
+          isPrivate: false
+          description: ""
+          sortKey: -1777958822043
+        method: GET
+        parameters:
+          - name: name
+            value: felipe
+            description: ""
+            disabled: true
+          - name: perPage
+            value: "1"
+            description: ""
+            disabled: true
+          - name: page
+            value: "1"
+            description: ""
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_012e036340c04176881f0276e904ec4a',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 86400 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES }}/1090eb9b-b7ac-45fc-8fe8-3f7ce622a298"
+        name: show
+        meta:
+          id: req_1e452ea0712c472683263e840353af8b
+          created: 1778135584308
+          modified: 1778136116892
+          isPrivate: false
+          description: ""
+          sortKey: -1777954940310
+        method: GET
+        parameters:
+          - name: name
+            value: felipe
+            description: ""
+            disabled: true
+          - name: perPage
+            value: "1"
+            description: ""
+            disabled: true
+          - name: page
+            value: "1"
+            description: ""
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_012e036340c04176881f0276e904ec4a',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 86400 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RES: refunds
+  - name: Uploads
+    meta:
+      id: fld_1b245202c7534ead961eae6d6a8e9e50
+      created: 1778137343123
+      modified: 1778137355879
+      sortKey: -1778137343123
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES }}"
+        name: Create
+        meta:
+          id: req_9fb07730f5e64da59c208deecf7ca68b
+          created: 1778137370833
+          modified: 1778559784848
+          isPrivate: false
+          description: ""
+          sortKey: -1778137370833
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: file
+              value: ""
+              description: ""
+              disabled: false
+              fileName: C:\Users\fma_2\OneDrive\Imagens\comprovante.jpeg
+              type: file
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_012e036340c04176881f0276e904ec4a',
+            'b64::JC50b2tlbg==::46b', 'when-expired', 86400 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL_ }}/{{ _.RES }}/5ad2ae69981c35b1206f-comprovante.jpeg"
+        name: Show
+        meta:
+          id: req_7ac7f6a47b684643964eb98e37101f2c
+          created: 1778560121109
+          modified: 1778560201039
+          isPrivate: false
+          description: ""
+          sortKey: -1778560121109
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RES: uploads
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_b469a9cf8251949ab6e0584fb58dfc809c0a64a2
+    created: 1777845049295
+    modified: 1777845049295
+environments:
+  name: Base Environment
+  meta:
+    id: env_b469a9cf8251949ab6e0584fb58dfc809c0a64a2
+    created: 1777845049291
+    modified: 1777845049291
+    isPrivate: false
+  subEnvironments:
+    - name: Dev:Docker
+      meta:
+        id: env_cb694f969d1945298a22c62e282b1acc
+        created: 1777845063470
+        modified: 1777877467618
+        isPrivate: false
+        sortKey: 1777845063470
+      data:
+        BASE_URL_: http://localhost:3334
+      color: "#80c6a2"
+    - name: Prod
+      meta:
+        id: env_f8fef309d14e413286360022c543244d
+        created: 1777845065476
+        modified: 1777845084461
+        isPrivate: false
+        sortKey: 1777845065476
+      color: "#758fcc"
