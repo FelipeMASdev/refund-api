@@ -1,3 +1,4 @@
+name: refund-api
 services:
   postgres:
     image: bitnami/postgresql:latest
